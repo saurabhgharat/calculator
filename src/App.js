@@ -1,26 +1,36 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+
+import "./App.css";
+import Simple from "./components/simple/simple";
+import { NavLink, BrowserRouter, Route, Switch } from "react-router-dom";
+import Scientific from "./components/scientific/scientific";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <div className="center">
+          <nav>
+            <div className="nav-wrapper">
+              <ul className="left">
+                <li>
+                  <NavLink to="/">Simple Calculator</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/scientific">Scientific Calculator</NavLink>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <div className="inputcontainer z-depth-3">
+            <Switch>
+              <Route exact path="/" component={Simple} />
+              <Route path="/scientific" component={Scientific} />
+            </Switch>
+            <br />
+          </div>
+        </div>
+      </BrowserRouter>
     );
   }
 }
